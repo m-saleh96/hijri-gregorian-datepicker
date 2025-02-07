@@ -1,0 +1,30 @@
+<div id="date-picker-container">
+  <button type="text" class="form-control d-flex justify-content-between" style="text-align: start; height: 55px; background-color: transparent;" [class.active-btn]="showDatePicker" (click)="showDatePicker=!showDatePicker">
+    <span [ngClass]="!date?.value ? 'date-placeholder':''">
+      {{!date?.value ? 'Select Date' :date?.value }}
+    </span>
+    <div class="menu-arrow">
+      <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.16992 2.5V5.5" stroke="#2B3E4B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16.1699 2.5V5.5" stroke="#2B3E4B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M3.66992 9.58984H20.6699" stroke="#2B3E4B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M21.1699 9V17.5C21.1699 20.5 19.6699 22.5 16.1699 22.5H8.16992C4.66992 22.5 3.16992 20.5 3.16992 17.5V9C3.16992 6 4.66992 4 8.16992 4H16.1699C19.6699 4 21.1699 6 21.1699 9Z" stroke="#2B3E4B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15.8652 14.2002H15.8702" stroke="#2B3E4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15.8652 17.2002H15.8702" stroke="#2B3E4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12.166 14.2002H12.171" stroke="#2B3E4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12.166 17.2002H12.171" stroke="#2B3E4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8.46484 14.2002H8.46984" stroke="#2B3E4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8.46484 17.2002H8.46984" stroke="#2B3E4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </button>
+
+  <div class="date-container">
+    <div *ngIf="showDatePicker" style="position: relative;">
+      <ngb-datepicker [minDate]="minDate" [maxDate]="maxDate" *ngIf="!isHigri" #dp [(ngModel)]="model" (ngModelChange)="onModelChange()"/>
+      <app-hijri-date *ngIf="isHigri" (dateSelected)="onDatePicked($event)" [hijriCurrentDate]="hijriCurrentDate" [minDateHijri]="minDateHijri" [maxDateHijri]="maxDateHijri"></app-hijri-date>
+      <div class="switch">
+        <input type="checkbox" [checked]="isHigri" (click)="toggleDateType()">
+      </div>
+  </div>
+</div>

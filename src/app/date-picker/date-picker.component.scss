@@ -1,0 +1,31 @@
+
+button{
+  display: flex;
+  align-items: center;
+}
+
+.date-container{
+  position: absolute;
+  max-width: 400px;
+  z-index: 2;
+
+  .switch{
+    position: absolute;
+    top: 10px;
+    left: 47.5%;
+  }
+}
+
+::ng-deep .date-container  {
+  .form-select{
+    width: 75px;
+  }
+  .form-select:first-child{
+    margin-inline-end: 15px !important;
+  }
+}
+
+::ng-deep .ngb-dp-weekday{
+  font-style: normal !important;
+}
+
