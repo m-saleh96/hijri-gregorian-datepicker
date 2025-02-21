@@ -1,27 +1,70 @@
-# HijriGregorianDatepicker
+# Gregorian-Hijri Date Picker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.11.
+A date picker that supports both Gregorian and Hijri calendars. This standalone component helps users select dates in both calendars seamlessly.
 
-## Development server
+## Features
+- Dual calendar support (Gregorian & Hijri)
+- Emits selected date in both formats
+- Allows setting minimum and maximum date restrictions
+- Standalone component with manual setup
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Installation & Setup
+Since this is a standalone component, you need to manually integrate it into your Angular project.
 
-## Code scaffolding
+### Dependencies
+Ensure you have the required dependencies installed:
+```bash
+npm install @ng-bootstrap/ng-bootstrap hijri-converter
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Usage
+Import and use the component in your Angular project:
 
-## Build
+```html
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5">
+      <app-date-picker
+        (dateSelected)="onDatePicked($event)"
+        [currentDate]="currentDate"
+        [minDate]="minDate"
+        [maxDate]="maxDate">
+      </app-date-picker>
+    </div>
+    <div class="col-md-3">
+      <span>{{date?.gregorian}}</span><br>
+      <span>{{date?.hijri}}</span>
+    </div>
+  </div>
+</div>
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Inputs
+| Input         | Type     | Description |
+|--------------|---------|-------------|
+| `currentDate` | `string` | Sets the initial date (Format: 'YYYY-M-D', e.g., '2025-1-1') |
+| `minDate`     | `string` | Sets the minimum selectable date (Format: 'YYYY-M-D') |
+| `maxDate`     | `string` | Sets the maximum selectable date (Format: 'YYYY-M-D') |
 
-## Running unit tests
+### Outputs
+| Event        | Payload | Description |
+|-------------|---------|-------------|
+| `dateSelected` | `{ gregorian: string, hijri: string }` | Emits an object containing the selected date in both Gregorian and Hijri formats. |
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Example event payload:
+```json
+{
+  "gregorian": "2025-01-01",
+  "hijri": "1446-06-20"
+}
+```
 
-## Running end-to-end tests
+## Customization
+- The component can be styled using CSS.
+- Modify date formats or localization based on your project requirements.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Known Issues & Limitations
+- Ensure that `hijri-converter` is correctly installed to avoid conversion errors.
+- Browser compatibility is dependent on Angular and `ng-bootstrap` support.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+For any issues or contributions, feel free to submit a pull request or open an issue.
