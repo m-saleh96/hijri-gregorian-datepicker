@@ -2,7 +2,12 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-5">
-      <app-date-picker (dateSelected)="onDatePicked($event)" [currentDate]="currentDate" [min]="minDate" [max]="maxDate"></app-date-picker>
+      <app-date-picker
+        (dateSelected)="onDatePicked($event)"
+        [currentDate]="currentDate"
+        [minDate]="minDate"
+        [maxDate]="maxDate">
+      </app-date-picker>
     </div>
     <div class="col-md-3">
       <span>{{date?.gregorian}}</span><br>

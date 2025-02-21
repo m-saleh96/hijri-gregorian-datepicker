@@ -1,5 +1,6 @@
 <div id="date-picker-container">
-  <button type="text" class="form-control d-flex justify-content-between" style="text-align: start; height: 55px; background-color: transparent;" [class.active-btn]="showDatePicker" (click)="showDatePicker=!showDatePicker">
+  <button class="form-control d-flex justify-content-between" style="text-align: start; height: 55px; background-color: transparent;"
+  [class.active-btn]="showDatePicker" #btn (click)="toggleBtn(btn, $event)">
     <span [ngClass]="!date?.value ? 'date-placeholder':''">
       {{!date?.value ? 'Select Date' :date?.value }}
     </span>
@@ -20,8 +21,8 @@
   </button>
 
   <div class="date-container">
-    <div *ngIf="showDatePicker" style="position: relative;">
-      <ngb-datepicker [minDate]="minDate" [maxDate]="maxDate" *ngIf="!isHigri" #dp [(ngModel)]="model" (ngModelChange)="onModelChange()"/>
+    <div *ngIf="showDatePicker" style="position: relative;" >
+      <ngb-datepicker [minDate]="minGregorianDate" [maxDate]="maxGregorianDate" *ngIf="!isHigri" #dp [(ngModel)]="model" [startDate]="model" (ngModelChange)="onModelChange()"/>
       <app-hijri-date *ngIf="isHigri" (dateSelected)="onDatePicked($event)" [hijriCurrentDate]="hijriCurrentDate" [minDateHijri]="minDateHijri" [maxDateHijri]="maxDateHijri"></app-hijri-date>
       <div class="switch">
         <input type="checkbox" [checked]="isHigri" (click)="toggleDateType()">

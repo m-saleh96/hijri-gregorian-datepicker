@@ -12,8 +12,8 @@ export class AppComponent {
   title = 'hijri-gregorian-datepicker';
   date;
   currentDate:string;
-  maxDate:string;
   minDate:string;
+  maxDate:string;
 
   onDatePicked(e){
     this.date = e;

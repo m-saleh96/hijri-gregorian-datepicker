@@ -11,8 +11,9 @@ button{
 
   .switch{
     position: absolute;
-    top: 10px;
-    left: 47.5%;
+    top: 21px;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -21,11 +22,17 @@ button{
     width: 75px;
   }
   .form-select:first-child{
-    margin-inline-end: 15px !important;
+    margin-inline-end: 15px;
+  }
+  .ngb-dp-weekday{
+    font-style: normal;
   }
 }
 
-::ng-deep .ngb-dp-weekday{
-  font-style: normal !important;
+button{
+  box-shadow: none !important;
 }
 
+.active-btn{
+  border: #86b7fe solid 1px;
+}
